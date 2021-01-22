@@ -1,0 +1,123 @@
+﻿{"frames": {
+
+"btn_arrow_0000":
+{
+	"frame": {"x":1,"y":1,"w":80,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":92},
+	"sourceSize": {"w":80,"h":92}
+},
+"btn_home_0000":
+{
+	"frame": {"x":82,"y":1,"w":70,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":82},
+	"sourceSize": {"w":70,"h":82}
+},
+"btn_moregames_0000":
+{
+	"frame": {"x":153,"y":1,"w":171,"h":97},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":171,"h":97},
+	"sourceSize": {"w":171,"h":97}
+},
+"btn_options_0000":
+{
+	"frame": {"x":325,"y":1,"w":70,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":82},
+	"sourceSize": {"w":70,"h":82}
+},
+"btn_play_0000":
+{
+	"frame": {"x":396,"y":1,"w":102,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":102,"h":102},
+	"sourceSize": {"w":102,"h":102}
+},
+"btn_replay_0000":
+{
+	"frame": {"x":1,"y":104,"w":102,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":102,"h":102},
+	"sourceSize": {"w":102,"h":102}
+},
+"btn_share_0000":
+{
+	"frame": {"x":104,"y":104,"w":70,"h":83},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":83},
+	"sourceSize": {"w":70,"h":83}
+},
+"btn_sound_off_0000":
+{
+	"frame": {"x":175,"y":104,"w":70,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":82},
+	"sourceSize": {"w":70,"h":82}
+},
+"btn_sound_on_0000":
+{
+	"frame": {"x":246,"y":104,"w":70,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":82},
+	"sourceSize": {"w":70,"h":82}
+},
+"medal_0000":
+{
+	"frame": {"x":317,"y":104,"w":93,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":90},
+	"sourceSize": {"w":93,"h":90}
+},
+"medal_0001":
+{
+	"frame": {"x":411,"y":104,"w":93,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":90},
+	"sourceSize": {"w":93,"h":90}
+},
+"medal_0002":
+{
+	"frame": {"x":1,"y":207,"w":93,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":90},
+	"sourceSize": {"w":93,"h":90}
+},
+"plashka_0000":
+{
+	"frame": {"x":95,"y":207,"w":96,"h":52},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":52},
+	"sourceSize": {"w":96,"h":52}
+},
+"tutorial_0000":
+{
+	"frame": {"x":192,"y":207,"w":304,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":304,"h":79},
+	"sourceSize": {"w":304,"h":79}
+}},
+"meta": {
+	"app": "Adobe Flash CS6",
+	"version": "12.0.2.529",
+	"image": "ss_main.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "1"
+}
+}
