@@ -359,7 +359,7 @@ function (a) {
                     branding: {
                         main: {
                             label: "main",
-                            image: "//www8.agame.com/mirror/img/logo_A10_202x50.png",
+                            image: "",
                             url: "//www.gamehome.us",
                             style: "",
                             width: "202",
@@ -371,7 +371,7 @@ function (a) {
                         },
                         logo: {
                             label: "logo",
-                            image: "//www8.agame.com/mirror/img/logo_A10_202x50.png",
+                            image: "",
                             url: "//www.gamehome.us",
                             style: "",
                             width: "202",
@@ -383,7 +383,7 @@ function (a) {
                         },
                         more_games: {
                             label: "more_games",
-                            image: null,
+                            image: "",
                             url: "//www.gamehome.us",
                             style: "",
                             width: null,
