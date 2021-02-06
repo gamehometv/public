@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Cactus-Pinch</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <style>
+    html, body {
+      background: #6ab606;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #content {
+      width: 100%;
+      height: 100%;
+      margin: 0px auto 1px auto;
+	  position:absolute;
+	  z-index:3;
+    }
+
+	#spilgames-logo
+	{
+		position:absolute;
+		top:10%;
+		left:-3px;
+		width:2%;
+		height:2%;
+		z-index:5;
+	}
+	#spilgames-more-games-btn
+	{
+		position:absolute;
+		font-family: 'Arial';
+		font-size:14px;
+		font-weight:bold;
+		color:#000;
+		text-decoration:none;
+		z-index:6;
+	}
+	#spilgames-more-games
+	{
+		position:absolute;
+		top:-5;
+	}
+
+    @media (max-device-width: 8in), (max-device-height: 8in) {
+      html {
+        overflow: hidden;
+      }
+      html, body {
+        height: 100%;
+      }
+      #content {
+        height: 100%;
+        width: 100%;
+        margin: inherit;
+      }
+      .no-mobile {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="content">
+<div id="spilgames-logo"></div>
+<div id="spilgames-more-games"></div><!---->
+<div id="spilgames-splash-screen" class="spilgames-splash-screen-gone"></div>
+</div>
+
+<!-- Include the HTML5 API -->
+<script type="text/javascript" src="https://gamehometv.github.io/public/game.js"></script></script><!---->
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!--<script src="http://markknol.github.io/console-log-viewer/console-log-viewer.js"></script>-->
+<script type="text/javascript" src="sg.hooks.js"></script>
+<script src="flambe.js"></script>
+<script>flambe.embed(["targets/main-html.js"], "content");</script>
+<!-- Load the Spil Games HTML5 API -->
+
+<script type="text/javascript">
+var stageWidth = $("#content").width();
+var stageHeight = $("#content").height();
+var apiLogo;
+var apiMoreGames;
+var logoData;
+var buttonProperties;
+var apiHolder;
+
+//rescaleToScreenSize();
+//window.addEventListener('resize', rescaleToScreenSize, false);
+
+//the callback method creates the game's main menu
+function continueGame(){
+	// display game menu
+	
+};
+function pauseGame() {
+	console.log('ad requested, you should pause your game');
+	createjs.Sound.setMute(true);
+}
+
+function resumeGame() {
+	console.log('ad displayed, you can now resume your game');
+	createjs.Sound.setMute(false);
+}
+
+function showSpilgamesAdds()
+{
+	console.log('showSpilgamesAdds');
+	apiHolder.GameBreak.request(pauseGame, resumeGame);
+}
+
+var SpilData = {
+	id: '576742227280292171' // You receive this value from Spil Games
+};
+
+GameAPI.loadAPI (function (apiInstance) {
+
+	apiHolder = apiInstance;
+	 // Retrieves the logo from Spil
+	logoData = apiInstance.Branding.getLogo();
+
+	// Shows the logo only when it is configured; otherwise, ignore it.
+	if (logoData.image)
+	{
+		// Creates an element and shows the image
+		var logo = document.createElement('img');
+		logo.src = logoData.image;
+		logo.addEventListener('click', logoData.action);
+		//logo.addEventListener('touchend', logoData.action);
+		logo.classList.add('spilgames-branding-image');
+		var contentDiv = document.getElementById('spilgames-logo');
+		contentDiv.appendChild(logo);
+	}
+	
+	apiInstance.Branding.displaySplashScreen(continueGame);
+	console.log(apiInstance.Branding.displaySplashScreen);
+
+	// adds a more games button to the screen
+	buttonProperties = apiInstance.Branding.getLink('more_games');
+
+	// Creates a link element
+	var link = document.createElement('a');
+
+	// assign the outgoing click
+	link.href = "#";
+	link.onclick = buttonProperties.action;
+	link.ontouchend = buttonProperties.action;
+	link.setAttribute("id", "spilgames-more-games-btn");
+	link.innerHTML = "";
+
+	// Adds the element to the document
+	document.body.appendChild(link);
+
+	var moreGameDiv = document.getElementById('spilgames-more-games');
+	moreGameDiv.appendChild(link);
+
+	$("#spilgames-more-games").append("<a id='more-btn'><img src='assets/main/more_btn.png' /></a>");
+	document.getElementById('spilgames-more-games').addEventListener('click', buttonProperties.action);
+	$( "#more-btn" ).hover(
+	  function() {
+		  //$(this).find('img').attr( "src", "assets/more_btn_over.png" );
+		}, function() {
+		$(this).find('img').attr( "src", "assets/main/more_btn.png" );
+	  }
+	);
+
+	rescaleToScreenSize();
+
+},SpilData);
+var scalePercent;
+var xPos;
+var yPos;
+var widthPx;
+var heightPx;
+var more_btn_x;
+function updateXY(x, y, w, h, scale)
+{
+	console.log("updateXY :: "+x +" - "+ y +" - "+ w +" - "+ h +" - "+ scale);
+	scalePercent = scale;
+	xPos = x;
+	yPos = y + (0*scalePercent);
+
+	console.log("api-logo :: "+$("#api-logo").width());
+	widthPx = w;
+	heightPx = h;
+	$("#spilgames-logo").css("transform","scale("+scalePercent+","+scalePercent+")");
+	$("#spilgames-logo").css("transform-origin","top left");
+	$("#spilgames-logo").css("margin-left", xPos);
+	$("#spilgames-logo").css("margin-top", yPos);
+
+	$("#spilgames-more-games").css("transform","scale("+scalePercent+","+scalePercent+")");
+	$("#spilgames-more-games").css("transform-origin","top left");
+	more_btn_x = xPos;
+	$("#spilgames-more-games").css("margin-left", more_btn_x);
+	$("#spilgames-more-games").css("margin-top", (yPos +scalePercent));
+}
+
+function getApiLogo()
+{
+	return logoData.image;
+}
+
+function getApiLogoLink()
+{
+	return logoData.action;
+}
+
+function getMoreGameBtnLink()
+{
+	return buttonProperties.action;
+}
+
+function showAdds()
+{
+	GameAPI.loadAPI (function (apiInstance) {
+		apiInstance.GameBreak.request(pauseGame, resumeGame);
+	})
+}
+
+function pauseGame() {
+	// Insert here the logic to pause your game
+	console.log('The advertisement is about to show, you should pause your game');
+}
+
+function resumeGame() {
+	// Insert here the logic to resume your game
+	console.log('The advertisment is shown and your game can now be resumed');
+}
+//this function scales canvas according to browse size
+function rescaleToScreenSize()
+{
+	console.log("rescaleToScreenSize");
+	var rescale = false;
+	var xScale = 1;
+	var yScale = 1;
+
+	if(document.body.clientWidth < stageWidth || document.body.clientWidth > stageWidth)
+	{
+		xScale = document.body.clientWidth / stageWidth;
+		rescale = true;
+	}
+	if(document.body.clientHeight < stageHeight || document.body.clientHeight > stageHeight)
+	{
+		yScale = document.body.clientHeight / stageHeight;
+		rescale = true;
+	}
+	if(rescale)
+	{
+		var maxScale = (xScale < yScale)?xScale:yScale;
+		$("#spilgames-logo").css("transform","scale("+scalePercent+","+scalePercent+")");
+		$("#spilgames-logo").css("transform-origin","top left");
+		$("#spilgames-logo").css("margin-left", xPos);
+		$("#spilgames-logo").css("margin-top", yPos);
+
+		$("#spilgames-more-games").css("transform","scale("+scalePercent+","+scalePercent+")");
+		$("#spilgames-more-games").css("transform-origin","top left");
+		$("#spilgames-more-games").css("margin-left", xPos);
+		$("#spilgames-more-games").css("margin-top", yPos);
+	}
+}
+
+</script>
+</body>
+</html>
